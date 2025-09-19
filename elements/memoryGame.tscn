@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx8a727ah7yhq"]
+
+[ext_resource type="Script" uid="uid://lgnog72g7s4i" path="res://memory/scripts/memory_game.gd" id="1_0d3mj"]
+[ext_resource type="PackedScene" uid="uid://ddkq128f6a1j5" path="res://memory/elements/card.tscn" id="2_o8ilc"]
+[ext_resource type="Texture2D" uid="uid://dthrwohrfosof" path="res://memory/sprites/card_spades_A.png" id="3_gh53v"]
+[ext_resource type="Texture2D" uid="uid://dexh4ixlhblyt" path="res://memory/sprites/card_diamonds_04.png" id="4_h4kma"]
+[ext_resource type="Texture2D" uid="uid://dygeh3uqtqg3k" path="res://memory/sprites/card_hearts_07.png" id="5_doxmr"]
+
+[node name="MemoryGame" type="Node2D"]
+script = ExtResource("1_0d3mj")
+
+[node name="Gamemain" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="Gamemain"]
+layout_mode = 0
+offset_right = 782.0
+offset_bottom = 517.0
+columns = 3
+
+[node name="Card" parent="Gamemain/GridContainer" instance=ExtResource("2_o8ilc")]
+layout_mode = 2
+card_value = "Aspades"
+card_front = ExtResource("3_gh53v")
+
+[node name="Card2" parent="Gamemain/GridContainer" instance=ExtResource("2_o8ilc")]
+layout_mode = 2
+card_value = "4diamonds"
+card_front = ExtResource("4_h4kma")
+
+[node name="Card3" parent="Gamemain/GridContainer" instance=ExtResource("2_o8ilc")]
+layout_mode = 2
+
+[node name="Card4" parent="Gamemain/GridContainer" instance=ExtResource("2_o8ilc")]
+layout_mode = 2
+card_value = "7hearts"
+card_front = ExtResource("5_doxmr")
+
+[node name="Card5" parent="Gamemain/GridContainer" instance=ExtResource("2_o8ilc")]
+layout_mode = 2
+card_value = "7hearts"
+card_front = ExtResource("5_doxmr")
+
+[node name="Card6" parent="Gamemain/GridContainer" instance=ExtResource("2_o8ilc")]
+layout_mode = 2
+
+[node name="Card7" parent="Gamemain/GridContainer" instance=ExtResource("2_o8ilc")]
+layout_mode = 2
+card_value = "4diamonds"
+card_front = ExtResource("4_h4kma")
+
+[node name="Card8" parent="Gamemain/GridContainer" instance=ExtResource("2_o8ilc")]
+layout_mode = 2
+
+[node name="Card9" parent="Gamemain/GridContainer" instance=ExtResource("2_o8ilc")]
+layout_mode = 2
+card_value = "Aspades"
+card_front = ExtResource("3_gh53v")
+
+[node name="FlipTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="card_selected" from="Gamemain/GridContainer/Card" to="." method="card_clicked"]
+[connection signal="card_selected" from="Gamemain/GridContainer/Card2" to="." method="card_clicked"]
+[connection signal="card_selected" from="Gamemain/GridContainer/Card3" to="." method="card_clicked"]
+[connection signal="card_selected" from="Gamemain/GridContainer/Card4" to="." method="card_clicked"]
+[connection signal="card_selected" from="Gamemain/GridContainer/Card5" to="." method="card_clicked"]
+[connection signal="card_selected" from="Gamemain/GridContainer/Card6" to="." method="card_clicked"]
+[connection signal="card_selected" from="Gamemain/GridContainer/Card7" to="." method="card_clicked"]
+[connection signal="card_selected" from="Gamemain/GridContainer/Card8" to="." method="card_clicked"]
+[connection signal="card_selected" from="Gamemain/GridContainer/Card9" to="." method="card_clicked"]
+[connection signal="timeout" from="FlipTimer" to="." method="_on_flip_timer_timeout"]
